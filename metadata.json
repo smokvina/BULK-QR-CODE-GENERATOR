@@ -1,5 +1,5 @@
 {
-  "name": "QR Code Generator",
+  "name": "Bulk Whatsapp QR Code Generator for restaurants and hotels",
   "description": "Quickly generate unique WhatsApp QR codes for every table or location in your restaurant, cafe, or bar. Guests can scan the code to send a predefined message to your business WhatsApp number.",
   "requestFramePermissions": []
 }
