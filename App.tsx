@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { Header } from './components/Header';
 import { SetupForm } from './components/SetupForm';
@@ -9,14 +8,17 @@ import { Zap, LayoutGrid } from 'lucide-react';
 
 const App: React.FC = () => {
   const [generatedCodes, setGeneratedCodes] = useState<GeneratedQrCode[] | null>(null);
+  const [businessName, setBusinessName] = useState('');
 
-  const handleGenerate = useCallback((codes: GeneratedQrCode[]) => {
+  const handleGenerate = useCallback((codes: GeneratedQrCode[], name: string) => {
     setGeneratedCodes(codes);
+    setBusinessName(name);
     window.scrollTo(0, 0);
   }, []);
 
   const handleBack = useCallback(() => {
     setGeneratedCodes(null);
+    setBusinessName('');
     window.scrollTo(0, 0);
   }, []);
 
@@ -26,7 +28,7 @@ const App: React.FC = () => {
         <Header />
         <div className="mt-[-64px] z-10 relative">
           {generatedCodes ? (
-            <ResultsScreen codes={generatedCodes} onBack={handleBack} />
+            <ResultsScreen codes={generatedCodes} onBack={handleBack} businessName={businessName} />
           ) : (
             <>
               <SetupForm onGenerate={handleGenerate} />
